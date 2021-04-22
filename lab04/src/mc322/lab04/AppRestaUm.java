@@ -1,6 +1,6 @@
 public class AppRestaUm {
 
-    public static void executaJogo(String caminho) {
+    public static String[] executaJogo(String caminho) {
 
         // CSV Reader
         CSVReader csv = new CSVReader();
@@ -30,7 +30,7 @@ public class AppRestaUm {
                 System.out.print("Target: " + coord[1]);
                 System.out.println("Comando Invalido!");
             }
-
         }
+        return stateManager.getState();
     }
 }
