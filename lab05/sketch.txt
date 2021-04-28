@@ -1,0 +1,83 @@
+# App Dama
+## Esboço da atividade
+## Antonio e Eiji - 28/04/2021
+
+AppDama:
+    executaJogo():
+        - Ler os comandos do CSV e armazenar num vetor
+        - Fazer um loop para chamar a função do Board que executa o movimento
+
+Board:
+    stateMen -> matriz de Men
+    stateKings -> matriz de Kings
+    history -> array de strings
+
+    convertStateToString():
+        - realiza uma concatenação das duas matrizes
+        - converte a concatenação para uma string
+
+    saveStateOnHistory():
+        - convertStateToString
+        - append no history
+
+    executeCommand():
+        - verifica se esta dentro do tabuleiro
+        - verifica se esta livre o dest
+        - valida se é movimento ou captura
+        - se for movimento:
+            - chama a peça e verifica se o movimento é valido
+            - executa o movimento
+        - se for captura:
+            - valida se a captura é valida
+            - executa a captura
+        - salva o estado atual do tabuleiro no history
+
+    printState():
+        - convertStateToString
+        - imprime o estado atual do tabuleiro
+
+    returnStateAsArrayofString():
+        return history;
+
+    isCapture():
+        - valida se tem peça entre a origem e o destino
+        - retorna true se tiver
+
+    executeMovement():
+        - substitui o source por -
+        - substitui o destino por tipo e cor da peça
+
+    executeCapture():
+        - substitui o source por -
+        - substitui a peça captura por -
+        - substitui o destino por tipo e cor da peça
+    
+
+Position:
+    public linha
+    public coluna
+
+    construtor():
+
+
+
+Men:
+    currentPos -> Posição
+    color -> string
+
+    validateMove(src, dest):
+        - verifica se o src e o dest diferem de 1 linha e a coluna
+
+    validateCapture(src, dest):
+        - verifica se o src e o dest diferem de 2 linha e a coluna pra mais ou menos
+
+
+Kings:
+    currentPos -> Posicao
+    color -> string
+
+    validateMove():
+        - verifica se esta em diagonal
+
+    validateCapture(src, dest):
+        - verifica se esta em diagonal
