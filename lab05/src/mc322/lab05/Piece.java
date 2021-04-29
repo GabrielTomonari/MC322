@@ -1,13 +1,17 @@
 public class Piece {
     public char pieceColor;
-    Position pos;
+    MatrixPosition pos;
 
-    public Position executeMove(Position target){
+    public MatrixPosition executeMove(MatrixPosition target) {
         this.pos = target;
         return this.pos;
     }
 
-    public boolean validateMove(Position target){
+    public boolean validateMove(MatrixPosition target) {
+        return true;
+    }
+
+    public boolean validateCapture(MatrixPosition target) {
         return true;
     }
 }

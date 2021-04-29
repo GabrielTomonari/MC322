@@ -8,12 +8,14 @@ public class AppDama {
         String commands[] = csv.requestCommands();
 
         // Instances
-        BoardState board = new BoardState(1);
+        BoardState boardState = new BoardState(1);
+        BoardController boardController = new BoardController(boardState);
 
         // Main Logic
         for (int i = 0; i < commands.length; i++) {
-
+            boardController.executeCommand(commands[i]);
         }
 
+        return boardState.returnStateAsArrayofString();
     }
 }

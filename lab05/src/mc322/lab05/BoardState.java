@@ -1,5 +1,3 @@
-import java.lang.*;
-
 public class BoardState {
 
     private Piece[][] state;
@@ -15,30 +13,28 @@ public class BoardState {
         System.out.println(" Tabuleiro inicial:");
         this.history[0] = "-p-p-p-p\np-p-p-p-\n-p-p-p-p\n--------\n--------\nb-b-b-b-\n-b-b-b-b\nb-b-b-b-\n";
 
-        Position position = new Position('A', '1');
-
-        for(int i = 1; i< 8; i = i+2){
-            this.state[0][i] = new Man('p', position);
-            this.state[2][i] = new Man('p', position);
-            this.state[6][i] = new Man('b', position);
+        for (int i = 1; i < 8; i = i + 2) {
+            this.state[0][i] = new Man('p', new MatrixPosition(0, i));
+            this.state[2][i] = new Man('p', new MatrixPosition(2, i));
+            this.state[6][i] = new Man('b', new MatrixPosition(6, i));
         }
-        for(int i = 0; i< 8; i = i+2){
-            this.state[1][i] = new Man('p', position);
-            this.state[5][i] = new Man('b', position);
-            this.state[7][i] = new Man('b', position);
+        for (int i = 0; i < 8; i = i + 2) {
+            this.state[1][i] = new Man('p', new MatrixPosition(1, i));
+            this.state[5][i] = new Man('b', new MatrixPosition(5, i));
+            this.state[7][i] = new Man('b', new MatrixPosition(7, i));
         }
         this.printState();
     }
 
-    public Piece getPieceAt(Position position){
+    public Piece getPieceAt(MatrixPosition position) {
         return this.state[position.lin][position.col];
     }
 
-    public void removePieceAt(Position position){
+    public void removePieceAt(MatrixPosition position) {
         this.state[position.lin][position.col] = null;
     }
 
-    public void placePieceAt(Piece piece, Position position){
+    public void placePieceAt(Piece piece, MatrixPosition position) {
         this.state[position.lin][position.col] = piece;
     }
 
@@ -73,7 +69,7 @@ public class BoardState {
 
     public void printState() {
         int line = 8;
-        //System.out.print("\n");
+        // System.out.print("\n");
         for (int i = 0; i < 8; i++) {
             System.out.print(line + " ");
             line--;

@@ -1,18 +1,25 @@
-public class Position {
+public class MatrixPosition {
     public int lin;
     public int col;
 
     public static void main(String[] args) {
-        Position pos = new Position('c', '4');
+        MatrixPosition pos = MatrixPosition.createFromLetterAndNum('c', '4');
         System.out.println("linha " + pos.lin);
         System.out.println("coluna " + pos.col);
     }
 
-    public Position(char letter, char num) {
-        this.col = turnLetterToCol(letter);
-        this.lin = turnNumToLine(num);
+    public MatrixPosition(int line, int col) {
+        this.col = col;
+        this.lin = line;
 
         return;
+    }
+
+    static MatrixPosition createFromLetterAndNum(char letter, char num) {
+        int line = MatrixPosition.turnNumToLine(num);
+        int col = MatrixPosition.turnLetterToCol(letter);
+
+        return new MatrixPosition(line, col);
     }
 
     static private int turnNumToLine(char num) {
