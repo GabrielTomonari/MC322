@@ -4,8 +4,8 @@ public class AppDama {
 
         // CSV Reader
         CSVReader csv = new CSVReader();
-        // csv.setDataSource(caminho);
-        String commands[] = { "d8:f6"};
+        csv.setDataSource(caminho);
+        String commands[] = csv.requestCommands();
 
         // Instances
         BoardState boardState = new BoardState(commands.length);

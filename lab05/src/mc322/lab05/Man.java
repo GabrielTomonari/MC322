@@ -8,7 +8,15 @@ public class Man extends Piece {
 
     @Override
     public boolean validateMove(MatrixPosition target) {
-        if (Math.abs(target.lin - this.pos.lin) > 1) {
+        int linInc = 0;
+        
+        if(this.pieceColor == 'p'){
+            linInc = 1;
+        }else if(this.pieceColor == 'b'){
+            linInc = -1;
+        }
+        
+        if (target.lin - this.pos.lin != linInc) {
             return false;
         }
         if (Math.abs(target.col - this.pos.col) > 1) {
