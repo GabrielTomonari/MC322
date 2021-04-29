@@ -41,7 +41,7 @@ public class BoardController {
         int linInc = this.extractIncrementer(source.lin, target.lin);
         int colInc = this.extractIncrementer(source.col, target.col);
 
-        MatrixPosition pos = new MatrixPosition(source.lin, source.col);
+        MatrixPosition pos = new MatrixPosition(source.lin + linInc, source.col + colInc);
         while (pos.lin != target.lin && pos.col != target.col) {
             if (this.state.getPieceAt(pos) != null) {
                 return true;
