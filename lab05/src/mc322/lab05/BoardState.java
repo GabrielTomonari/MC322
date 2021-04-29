@@ -13,9 +13,14 @@ public class BoardState {
         System.out.println(" Tabuleiro inicial:");
         this.history[0] = "-p-p-p-p\np-p-p-p-\n-p-p-p-p\n--------\n--------\nb-b-b-b-\n-b-b-b-b\nb-b-b-b-\n";
 
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                this.state[i][j] = new EmptyPiece(new MatrixPosition(i, j));
+            }
+        }
         for (int i = 1; i < 8; i = i + 2) {
-            this.state[0][i] = new Man('p', new MatrixPosition(0, i));
-            this.state[2][i] = new Man('p', new MatrixPosition(2, i));
+            this.state[0][i] = new King('B', new MatrixPosition(0, i));
+            this.state[2][i] = new EmptyPiece(new MatrixPosition(2, i));
             this.state[6][i] = new Man('b', new MatrixPosition(6, i));
         }
         for (int i = 0; i < 8; i = i + 2) {
@@ -31,7 +36,7 @@ public class BoardState {
     }
 
     public void removePieceAt(MatrixPosition position) {
-        this.state[position.lin][position.col] = null;
+        this.state[position.lin][position.col] = new EmptyPiece(position);
     }
 
     public void placePieceAt(Piece piece, MatrixPosition position) {
@@ -41,17 +46,10 @@ public class BoardState {
     private String covertStateToString() {
         // Converte a matriz de estado para string
         StringBuilder resultString = new StringBuilder();
-        char color;
 
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
-                if (this.state[i][j] != null) {
-                    color = state[i][j].pieceColor;
-                    resultString.append(color);
-                } else {
-                    resultString.append('-');
-                }
-
+                resultString.append(this.state[i][j].pieceColor);
             }
             resultString.append('\n');
         }
@@ -60,11 +58,12 @@ public class BoardState {
         return finalString;
     }
 
-    private void saveStateOnHistory() {
+    public void saveStateOnHistory() {
         // Converte a matriz de estado para string e insere o resultado no histórico
         String result;
         result = this.covertStateToString();
         history[this.round] = result;
+        this.round++;
     }
 
     public void printState() {
@@ -74,11 +73,7 @@ public class BoardState {
             System.out.print(line + " ");
             line--;
             for (int j = 0; j < 8; j++) {
-                if (this.state[i][j] != null) {
-                    System.out.print(this.state[i][j].pieceColor + " ");
-                } else {
-                    System.out.print("- ");
-                }
+                System.out.print(this.state[i][j].pieceColor + " ");
             }
             System.out.print("\n");
         }

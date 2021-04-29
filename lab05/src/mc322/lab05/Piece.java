@@ -11,7 +11,7 @@ public class Piece {
         return true;
     }
 
-    public boolean validateCapture(MatrixPosition target) {
+    public boolean validateCapture(MatrixPosition target, Piece pieceToCapture) {
         return true;
     }
 }

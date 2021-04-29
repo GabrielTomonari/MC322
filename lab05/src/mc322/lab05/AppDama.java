@@ -5,10 +5,10 @@ public class AppDama {
         // CSV Reader
         CSVReader csv = new CSVReader();
         // csv.setDataSource(caminho);
-        String commands[] = { "c3:d4", "f6:e5", "d4:f6" };
+        String commands[] = { "d8:f6"};
 
         // Instances
-        BoardState boardState = new BoardState(1);
+        BoardState boardState = new BoardState(commands.length);
         BoardController boardController = new BoardController(boardState);
 
         // Main Logic
