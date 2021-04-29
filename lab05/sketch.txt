@@ -52,14 +52,11 @@ Board:
         - substitui a peça captura por -
         - substitui o destino por tipo e cor da peça
     
-
 Position:
     public linha
     public coluna
 
     construtor():
-
-
 
 Men:
     currentPos -> Posição
@@ -81,3 +78,20 @@ Kings:
 
     validateCapture(src, dest):
         - verifica se esta em diagonal
+
+
+TODO LIST:
+BoardController:
+	[Eiji] isValidCommand
+	[Toni] isCapture
+	[Toni] executeCapture
+
+King:
+	[Eiji] validateMove
+	[Eiji] validateCapture
+	
+Man:
+	[Eiji] validateMove
+	[Eiji] validateCapture
+
+[Eiji] Arquivos CSV de teste
